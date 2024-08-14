@@ -13,18 +13,25 @@ public class SeleniumIntroduction {
 		//Same method names coming from WebDriver Interface but different implementations for different browsers
 		//can focus on both WebDriver methods + class methods
 
-		//Method 01-Selenium Manger Will Handle
-		ChromeDriver driver = new ChromeDriver();
-
-		//Method 02-Selenium Manger Will Handle
-		//Dynamic method dispatching to avoid to going object focus into the class methods instead of WebDriver methods
-		WebDriver driver2 = new ChromeDriver();
-
 		//Method 03-Selenium Manger Won't Handle
-		//ChromeDriver.exe -> Chrome browser
-		//Not Recommended
+		//webdriver.chrome.driver->value of path
 		System.setProperty("webdriver.chrome.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\ChromeDriver\\chromedriver.exe");
-		WebDriver driver3 = new ChromeDriver();
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://rahulshettyacademy.com");
+		
+		System.out.println("Title of the page is : "+driver.getTitle());
+		System.out.println("Current URL of the page is : "+driver.getCurrentUrl());
+		
+		//only close the current window 
+		driver.close();
+		//close all the windows associated with current window
+		driver.quit();
+		
+		
+		
+		
 	}
 
 }
