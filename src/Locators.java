@@ -24,6 +24,11 @@ public class Locators {
 		driver.findElement(By.className("signInBtn")).click();
 		//use cssSelector to get the error message due to wrong password
 		System.out.println("Error Log : "+driver.findElement(By.cssSelector("p.error")).getText());
+		//use linkText locator to navigate to the forget password page
+		driver.findElement(By.linkText("Forgot your password?")).click();
+		//use xpath locator to fill new username field
+		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("heshanhaputhanthri");
+		
 
 	}
 
