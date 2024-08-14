@@ -26,8 +26,14 @@ public class Locators {
 		System.out.println("Error Log : "+driver.findElement(By.cssSelector("p.error")).getText());
 		//use linkText locator to navigate to the forget password page
 		driver.findElement(By.linkText("Forgot your password?")).click();
-		//use xpath locator to fill new username field
+		//use xpath locator to fill new username and email fields
 		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("heshanhaputhanthri");
+		driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("hapu@gmail.com");
+		//when there's multiple elements with same xpath we can use index to uniquely identify the element that we want
+		driver.findElement(By.xpath("//input[@type='text'][2]")).clear();
+		//when we want to use cssSelector with index we can use it like this
+		//xpath index and cssSelector indexes can be differ due to hidden elements in the page
+		driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("hapu@yahoo.com");
 		
 
 	}
