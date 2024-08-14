@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SeleniumIntroduction {
@@ -15,15 +16,20 @@ public class SeleniumIntroduction {
 		//can focus on both WebDriver methods + class methods
 
 		//Method 03-Selenium Manger Won't Handle
-		//System.setProperty("webdriver.chrome.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\ChromeDriver\\chromedriver.exe");
-
 		//webdriver.chrome.driver->value of path
+		//Chrome Launch
+		//System.setProperty("webdriver.chrome.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\ChromeDriver\\chromedriver.exe");
 		//WebDriver driver = new ChromeDriver();
 
 		//Firefox Launch
 		//webdriver.gecko.driver
-		System.setProperty("webdriver.gecko.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\geckodriver.exe");
-		WebDriver driver = new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\geckodriver.exe");
+		//WebDriver driver = new FirefoxDriver();
+
+		
+		//Microsoft Edge Launch
+		System.setProperty("webdriver.edge.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\msedgedriver.exe");
+		WebDriver driver = new EdgeDriver();
 
 		driver.get("https://rahulshettyacademy.com");
 
@@ -34,7 +40,6 @@ public class SeleniumIntroduction {
 		driver.close();
 		//close all the windows associated with current window
 		driver.quit();
-
 
 	}
 
