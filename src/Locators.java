@@ -21,6 +21,7 @@ public class Locators {
 		driver.findElement(By.name("inputPassword")).sendKeys("hello123");
 		//<button class="submit signInBtn" type="submit">Sign In</button>
 		//there are two classes assigned for the sign in button among those two "signInBtn" class is more unique for that element
+		//if we use xpath for this scenario we have to use both classes //button[@class='submit signInBtn']
 		driver.findElement(By.className("signInBtn")).click();
 		//use cssSelector to get the error message due to wrong password
 		System.out.println("Error Log : "+driver.findElement(By.cssSelector("p.error")).getText());
@@ -49,9 +50,27 @@ public class Locators {
 		driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
 		//generating cssSelector with parent to child tags traverse techniques
 		System.out.println("Info Log : "+driver.findElement(By.cssSelector("form p")).getText());
+		//return to login page
+		//generating xpaths with parent to child tags traverse techniques
+		driver.findElement(By.xpath("//div[@class='forgot-pwd-btn-conainer']/button[1]")).click();
 		
+		//to avoid ElementClickInterceptedException in goto login button, we pause the thread for 1sec for it's transition
+		//not recommended
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
-
+		//another way of using cssSelector
+		driver.findElement(By.cssSelector("input#inputUsername")).sendKeys("heshanhaputhanthri");
+		//cssSelector based on regular expressions
+		driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys("rahulshettyacademy");
+		driver.findElement(By.id("chkboxOne")).click();
+		driver.findElement(By.id("chkboxTwo")).click();
+		//xpath based on regular expressions
+		driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
+		
 	}
 
 }
