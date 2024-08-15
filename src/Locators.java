@@ -26,6 +26,15 @@ public class Locators {
 		System.out.println("Error Log : "+driver.findElement(By.cssSelector("p.error")).getText());
 		//use linkText locator to navigate to the forget password page
 		driver.findElement(By.linkText("Forgot your password?")).click();
+		
+		//to avoid ElementClickInterceptedException in reset login button, we pause the thread for 1sec for it's transition
+		//not recommended
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		//use xpath locator to fill new username and email fields
 		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("heshanhaputhanthri");
 		driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("hapu@gmail.com");
@@ -34,6 +43,13 @@ public class Locators {
 		//when we want to use cssSelector with index we can use it like this
 		//xpath index and cssSelector indexes can be differ due to hidden elements in the page
 		driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("hapu@yahoo.com");
+		//generating xpaths with parent to child tags traverse techniques
+		driver.findElement(By.xpath("//form/input[3]")).sendKeys("0775165666");
+		//another way of using cssSelector
+		driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+		//generating cssSelector with parent to child tags traverse techniques
+		System.out.println("Info Log : "+driver.findElement(By.cssSelector("form p")).getText());
+		
 		
 
 	}
