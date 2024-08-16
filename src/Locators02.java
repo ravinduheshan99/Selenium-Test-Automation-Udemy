@@ -17,11 +17,14 @@ public class Locators02 {
 		//implicit wait -5 seconds timeout until load the error message to the page and avoid cssSelector not found errors 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		
+		//use getPassword method to extract password from forget password window
+		String password = getPassword(driver);
+		
 		driver.get("https://rahulshettyacademy.com/locatorspractice/");
 		
 		//providing correct username and incorrect password to check whether it is indicating error message
 		driver.findElement(By.id("inputUsername")).sendKeys(name);
-		driver.findElement(By.name("inputPassword")).sendKeys("rahulshettyacademy");
+		driver.findElement(By.name("inputPassword")).sendKeys(password);
 		//<button class="submit signInBtn" type="submit">Sign In</button>
 		//there are two classes assigned for the sign in button among those two "signInBtn" class is more unique for that element
 		//if we use xpath for this scenario we have to use both classes //button[@class='submit signInBtn']
@@ -46,6 +49,36 @@ public class Locators02 {
 		
 		driver.close();
 		
+	}
+	
+	public static String getPassword(WebDriver driver) {
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		driver.findElement(By.linkText("Forgot your password?")).click();
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+		//generating cssSelector with parent to child tags traverse techniques
+		//get the whole text appearing after click reset password button
+		String passwordText = driver.findElement(By.cssSelector("form p")).getText();
+		//splitting process of the password to extract actual password
+		String[] firstPasswordArray = passwordText.split("'");
+		//after splitting the string
+		//0th index - Please use temporary password
+		//1st index - rahulshettyacademy' to Login.
+		String[] secondPasswordArray = firstPasswordArray[1].split("'");
+		//after splitting the string
+		//0th index - rahulshettyacademy
+		//1st index -  to Login.
+		String actualPassword = secondPasswordArray[0];
+		
+		return actualPassword;
+	
 	}
 
 }
