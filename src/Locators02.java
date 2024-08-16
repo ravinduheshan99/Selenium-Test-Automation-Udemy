@@ -41,6 +41,11 @@ public class Locators02 {
 		//since there is one p tag we can use tagName locator
 		System.out.println("Actual matched with expected : "+driver.findElement(By.tagName("p")).getText());
 		
+		//generating xpath based on the buttons text
+		driver.findElement(By.xpath("//button[text()='Log Out']")).click();
+		
+		driver.close();
+		
 	}
 
 }
