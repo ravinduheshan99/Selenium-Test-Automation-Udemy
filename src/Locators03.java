@@ -15,7 +15,12 @@ public class Locators03 {
 		// /html/body/header <----absolute xpath - starting from the begining
 		// //header/div/button[1] <----relative xpath - starting from the header
 		// //header/div/button[1]/following-sibling::button[1]
+		//Traverse from parent elements to child elements
 		System.out.println("Button text : "+driver.findElement(By.xpath("//header/div/button[1]/following-sibling::button[1]")).getText());
+		
+		// //header/div/button[1]/parent::div/button[2]
+		//Traverse from child elements to parent elements
+		System.out.println("Button text : "+driver.findElement(By.xpath("//header/div/button[1]/parent::div/button[2]")).getText());
 
 	}
 
