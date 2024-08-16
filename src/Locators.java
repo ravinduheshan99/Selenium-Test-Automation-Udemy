@@ -37,13 +37,13 @@ public class Locators {
 		}
 		
 		//use xpath locator to fill new username and email fields
-		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("heshanhaputhanthri");
-		driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("hapu@gmail.com");
+		driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("ravinduhaputhanthri");
+		driver.findElement(By.xpath("//input[@placeholder='Email']")).sendKeys("hapu@yahoo.com");
 		//when there's multiple elements with same xpath we can use index to uniquely identify the element that we want
 		driver.findElement(By.xpath("//input[@type='text'][2]")).clear();
 		//when we want to use cssSelector with index we can use it like this
 		//xpath index and cssSelector indexes can be differ due to hidden elements in the page
-		driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("hapu@yahoo.com");
+		driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("hapu@gmail.com");
 		//generating xpaths with parent to child tags traverse techniques
 		driver.findElement(By.xpath("//form/input[3]")).sendKeys("0775165666");
 		//another way of using cssSelector
