@@ -12,7 +12,7 @@ public class DynamicDropDown {
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 
 		// //a[@value='MAA'] -> xpath for chennai
-		// //a[@value='BLR'] -> xpath for bengaluru
+		// //a[@value='BLR'] -> xpath for bengaluru 
 		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXTaction")).click();
 		//select departure city using xpath
 		driver.findElement(By.xpath("//a[@value='BLR']")).click();
@@ -21,7 +21,11 @@ public class DynamicDropDown {
 		//select arrival city using xpath
 		//since this is dynamic dropdown, add indexing because initially there are two elements belongs to //a[@value='MAA'] xpath
 		//to skip 1st appeared element we use index 2 we need the xpath of chennai in second dropdown
-		driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
+		
+		//driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
+		
+		//instead of using index for selecting arrival city we can use parent child relationship of xpaths
+		driver.findElement(By.xpath("(//div[@class='dropdownDiv'] //a[@value='MAA'])[2]")).click();
 
 	}
 
