@@ -26,6 +26,9 @@ public class DynamicDropDown {
 		
 		//instead of using index for selecting arrival city we can use parent child relationship of xpaths
 		driver.findElement(By.xpath("(//div[@class='dropdownDiv'] //a[@value='MAA'])[2]")).click();
+		//select the current date using cssSelector
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight")).click();
+		//select future date will be discussing in coming sessions
 
 	}
 
