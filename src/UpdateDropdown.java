@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.Assert;
 
 public class UpdateDropdown {
 
@@ -11,10 +13,14 @@ public class UpdateDropdown {
 
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
 		
+		//check using assertfalse whether the checkbox is selected
+		Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
 		//use regx and cssSelector to catch the checkbox
 		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
 		//check the selection status of expected checkbox
 		System.out.println("Is checkbox selected : "+driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		//check using asserttrue whether the checkbox is selected
+		Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
 		//count the number of checkboxes
 		System.out.println("Number of checkboxes : "+driver.findElements(By.cssSelector("input[type='checkbox']")).size());
 		
@@ -29,6 +35,7 @@ public class UpdateDropdown {
 		}
 
 		driver.findElement(By.id("btnclosepaxoption")).click();
+		Assert.assertEquals(driver.findElement(By.id("divpaxinfo")).getText(), "3 Adult");
 		System.out.println("Selected adult count : "+driver.findElement(By.id("divpaxinfo")).getText());
 
 	}
