@@ -10,7 +10,15 @@ public class UpdateDropdown {
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
-
+		
+		//use regx and cssSelector to catch the checkbox
+		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+		//check the selection status of expected checkbox
+		System.out.println("Is checkbox selected : "+driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
+		//count the number of checkboxes
+		System.out.println("Number of checkboxes : "+driver.findElements(By.cssSelector("input[type='checkbox']")).size());
+		
+		
 		driver.findElement(By.id("divpaxinfo")).click();
 		//to avoid synchronization errors
 		Thread.sleep(2000);
