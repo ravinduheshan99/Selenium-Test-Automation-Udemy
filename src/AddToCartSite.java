@@ -28,9 +28,11 @@ public class AddToCartSite {
 		driver.findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
 		driver.findElement(By.cssSelector("input[class='promoCode']")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.xpath("//button[text()='Apply']")).click();
+		
 		//Add explicit wait---->works only for this step
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.promoInfo")));
+		
 		System.out.println("Promocode Applying Status : "+driver.findElement(By.cssSelector("span.promoInfo")).getText());
 		driver.findElement(By.xpath("//button[text()='Place Order']")).click();
 	}
