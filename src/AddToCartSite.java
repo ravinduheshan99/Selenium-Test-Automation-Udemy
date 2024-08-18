@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddToCartSite {
 
@@ -12,7 +14,7 @@ public class AddToCartSite {
 
 		System.setProperty("webdriver.chrome.driver", "D:\\Documents\\Career\\My Projects\\Selenium Projects\\01-Introduction-Project\\selenium webdriver\\ChromeDriver\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		//Add implicit wait to proper synchronization in script
+		//Add implicit wait to proper synchronization in script---->works globally for every step
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 
@@ -26,6 +28,9 @@ public class AddToCartSite {
 		driver.findElement(By.xpath("//button[text()='PROCEED TO CHECKOUT']")).click();
 		driver.findElement(By.cssSelector("input[class='promoCode']")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.xpath("//button[text()='Apply']")).click();
+		//Add explicit wait---->works only for this step
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.promoInfo")));
 		System.out.println("Promocode Applying Status : "+driver.findElement(By.cssSelector("span.promoInfo")).getText());
 		driver.findElement(By.xpath("//button[text()='Place Order']")).click();
 	}
