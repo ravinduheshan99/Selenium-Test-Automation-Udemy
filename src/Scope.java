@@ -14,6 +14,7 @@ public class Scope {
 		// 1. Give me the count of links on the page
 		System.out.println("Links count on the page : "+driver.findElements(By.tagName("a")).size());
 		
+		//Limiting webdriver scope
 		WebElement footerDriver = driver.findElement(By.id("gf-BIG"));
 		// 2. Give me the count of links on the footer
 		System.out.println("Links count on the footer : "+footerDriver.findElements(By.tagName("a")).size());
