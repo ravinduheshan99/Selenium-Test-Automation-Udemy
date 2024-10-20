@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,7 +25,13 @@ public class test02_stream {
 		List<String> sortedItemNames = itemNames.stream().sorted().collect(Collectors.toList());
 		//compare original list vs sorted list
 		Assert.assertTrue(itemNames.equals(sortedItemNames));
-
+		
+		//scan the name column and if we getText -> Beans-> print the price of the Beans
+		List<String> price = items.stream().filter(s->s.getText().contains("Beans")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
+		price.forEach(s->System.out.println("price of the Beans : "+s));
 	}
-
+	
+	private static String getPriceVeggie(WebElement s) {
+		return s.findElement(By.xpath("following-sibling::td[1]")).getText();
+	}
 }
