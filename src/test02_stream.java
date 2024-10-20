@@ -29,6 +29,22 @@ public class test02_stream {
 		//scan the name column and if we getText -> Beans-> print the price of the Beans
 		List<String> price = items.stream().filter(s->s.getText().contains("Beans")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
 		price.forEach(s->System.out.println("price of the Beans : "+s));
+		
+		List<String> price2;
+		List<WebElement> items2;  
+		
+		do{
+			//scan the name column and if we getText -> Rice-> print the price of the Rice
+			items2 = driver.findElements(By.xpath("//tr/td[1]"));
+			price2 = items2.stream().filter(s->s.getText().contains("Rice")).map(s->getPriceVeggie(s)).collect(Collectors.toList());
+			
+			if(price2.size()<1) {
+				driver.findElement(By.cssSelector("[aria-label='Next']")).click();
+			}
+			
+		}while(price2.size()<1);
+		
+		price2.forEach(s->System.out.println("price of the Rice : "+s));
 	}
 	
 	private static String getPriceVeggie(WebElement s) {
