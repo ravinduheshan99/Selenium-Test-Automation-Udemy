@@ -49,6 +49,10 @@ public class PartialScreenshots {
 		// Save the screenshot as a file named "logo.png" in the current project directory
 		File file = name.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File("logo.png"));
+		
+		//get height and width
+		System.out.println("Height : "+name.getRect().getDimension().getHeight());
+		System.out.println("Width : "+name.getRect().getDimension().getWidth());
 	}
 
 }
